@@ -103,15 +103,6 @@
             }
         }
 
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
         .loading {
             display: flex;
             justify-content: center;
@@ -286,7 +277,10 @@
     </div>
 
     <script>
-        6558cb22c7b88afa62c8d134879e7486// User will add their own key
+        // ⚠️ IMPORTANT: ADD YOUR API KEY HERE (Between the quotes)
+        // Get your FREE API key from: https://openweathermap.org/api
+        const API_KEY = '6558cb22c7b88afa62c8d134879e7486';
+        
         let units = 'metric'; // Celsius
 
         // Weather icons mapping
@@ -323,12 +317,12 @@
                     },
                     error => {
                         console.error('Location error:', error);
-                        // Default to a city if location is denied
-                        getCityWeather('London');
+                        // Default to Kanpur if location is denied
+                        getCityWeather('Kanpur');
                     }
                 );
             } else {
-                getCityWeather('London');
+                getCityWeather('Kanpur');
             }
         }
 
@@ -481,20 +475,8 @@
             document.getElementById('mainContent').style.display = 'block';
         }
 
-        // Initialize
-        if (API_KEY === 'YOUR_API_KEY_HERE') {
-            document.getElementById('loadingScreen').innerHTML = `
-                <div class="text-center text-white px-6">
-                    <div class="text-6xl mb-4">🔑</div>
-                    <h2 class="text-2xl font-semibold mb-4">API Key Required</h2>
-                    <p class="mb-4">Please add your OpenWeatherMap API key to use this app.</p>
-                    <p class="text-sm mb-6">Get a free API key at <a href="https://openweathermap.org/api" target="_blank" class="underline">openweathermap.org</a></p>
-                    <p class="text-xs text-white/70">Edit line 289 in the HTML file and replace 'YOUR_API_KEY_HERE' with your actual API key.</p>
-                </div>
-            `;
-        } else {
-            getLocation();
-        }
+        // Initialize - YOUR API KEY IS ALREADY ADDED!
+        getLocation();
     </script>
 
 </body>
